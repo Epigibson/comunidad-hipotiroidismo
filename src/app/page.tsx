@@ -7,15 +7,15 @@ export default function LandingPage() {
       {/* Nav */}
       <nav className="landing-nav">
         <div className="container flex items-center justify-between">
-          <div className="landing-nav__brand">
+          <Link href="/" className="landing-nav__brand">
             <span className="landing-nav__icon">🦋</span>
             <span className="landing-nav__name">TiroVida</span>
-          </div>
+          </Link>
           <div className="landing-nav__actions">
             <Link href="/login" className="btn btn--ghost">
               Iniciar Sesión
             </Link>
-            <Link href="/register" className="btn btn--primary">
+            <Link href="/register" className="btn btn--premium-glow">
               Crear Cuenta
             </Link>
           </div>
@@ -24,128 +24,132 @@ export default function LandingPage() {
 
       {/* Hero */}
       <section className="hero">
-        <div className="container">
-          <div className="hero__content">
+        <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          
+          <div className="hero__badge-container">
             <div className="hero__badge">
-              <span className="badge badge--primary">🦋 Para ti, por ti</span>
+              <span className="hero__badge-icon">✨</span> Para ti, por ti
             </div>
-            <h1 className="hero__title">
-              Tu compañera en el camino del{" "}
-              <span className="hero__highlight">hipotiroidismo</span>
-            </h1>
-            <p className="hero__subtitle">
-              Registra tus síntomas, entiende tus laboratorios y conecta con una
-              comunidad que sabe lo que vives. Todo en un solo lugar, seguro y
-              privado.
-            </p>
-            <div className="hero__actions">
-              <Link href="/register" className="btn btn--primary btn--lg">
-                Comenzar Gratis
-              </Link>
-              <Link href="#features" className="btn btn--outline btn--lg">
-                Conocer más
-              </Link>
-            </div>
-            <p className="hero__disclaimer">
-              100% gratuito · Tus datos son privados · No sustituye opinión médica
-            </p>
           </div>
-        </div>
-        {/* Decorative blobs */}
-        <div className="hero__blob hero__blob--1" aria-hidden="true" />
-        <div className="hero__blob hero__blob--2" aria-hidden="true" />
-      </section>
 
-      {/* Features */}
-      <section className="features" id="features">
-        <div className="container">
-          <h2 className="features__title">Todo lo que necesitas</h2>
-          <p className="features__subtitle">
-            Herramientas diseñadas especialmente para personas con hipotiroidismo,
-            Hashimoto y SOP.
+          <h1 className="hero__title">
+            Domina el <span className="hero__highlight">hipotiroidismo</span><br />
+            recupera tu energía.
+          </h1>
+          
+          <p className="hero__subtitle">
+            Tracker clínico, visualización de laboratorios y una comunidad privada diseñada exclusivamente para pacientes con condiciones tiroideas.
           </p>
-          <div className="features__grid">
-            <div className="feature-card">
-              <div className="feature-card__icon">📊</div>
-              <h3 className="feature-card__title">Registro Diario</h3>
-              <p className="feature-card__desc">
-                Registra energía, niebla mental, estado de ánimo y dolor articular
-                con una escala visual rápida.
-              </p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-card__icon">🔬</div>
-              <h3 className="feature-card__title">Laboratorios</h3>
-              <p className="feature-card__desc">
-                Guarda tus resultados de TSH, T3, T4 y anticuerpos. Visualiza
-                tendencias y rangos de referencia.
-              </p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-card__icon">📈</div>
-              <h3 className="feature-card__title">Correlación Clínica</h3>
-              <p className="feature-card__desc">
-                Genera reportes que conectan tus síntomas con tus labs para
-                compartir con tu endocrinólogo.
-              </p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-card__icon">💬</div>
-              <h3 className="feature-card__title">Comunidad Segura</h3>
-              <p className="feature-card__desc">
-                Foros moderados con opción de participar de forma anónima.
-                Trigger warnings para temas sensibles.
-              </p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-card__icon">🤝</div>
-              <h3 className="feature-card__title">Sistema Buddy</h3>
-              <p className="feature-card__desc">
-                Conecta con alguien que comparte tu diagnóstico para apoyarse
-                mutuamente en el camino.
-              </p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-card__icon">📱</div>
-              <h3 className="feature-card__title">App Instalable</h3>
-              <p className="feature-card__desc">
-                Instálala en tu teléfono como una app nativa. Funciona incluso
-                sin conexión a internet.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="cta">
-        <div className="container">
-          <div className="cta__card">
-            <h2 className="cta__title">
-              No estás sola en esto 🦋
-            </h2>
-            <p className="cta__desc">
-              Únete a una comunidad que entiende lo que es vivir con
-              hipotiroidismo. Tu bienestar importa.
-            </p>
-            <Link href="/register" className="btn btn--primary btn--lg">
-              Crear mi cuenta gratis
+          
+          <div className="hero__actions">
+            <Link href="/register" className="btn btn--premium-glow btn--lg">
+              Comenzar Gratis
             </Link>
           </div>
+
+          {/* Floating UI Mockup */}
+          <div className="hero__mockup">
+            <div className="hero__mockup-header">
+              <div className="mockup-dot"></div>
+              <div className="mockup-dot"></div>
+              <div className="mockup-dot"></div>
+            </div>
+            <div className="hero__mockup-body">
+              <div className="mockup-sidebar">
+                <div className="mockup-card" style={{ padding: '16px' }}>
+                  <div style={{ color: '#c4b5fd', fontSize: '12px', marginBottom: '8px' }}>ENERGÍA HOY</div>
+                  <div style={{ fontSize: '24px', fontWeight: 'bold' }}>8/10</div>
+                </div>
+                <div className="mockup-card" style={{ padding: '16px' }}>
+                  <div style={{ color: '#c4b5fd', fontSize: '12px', marginBottom: '8px' }}>NIEBLA MENTAL</div>
+                  <div style={{ fontSize: '24px', fontWeight: 'bold' }}>Baja</div>
+                </div>
+              </div>
+              <div className="mockup-graph">
+                <div className="mockup-bar"></div>
+                <div className="mockup-bar"></div>
+                <div className="mockup-bar"></div>
+                <div className="mockup-bar"></div>
+                <div className="mockup-bar"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Bento Grid Features */}
+      <section className="features" id="features">
+        <div className="container">
+          <h2 className="features__title">Clínico pero Humano.</h2>
+          <p className="features__subtitle">
+            Diseñamos herramientas para que dejes de adivinar y empieces a entender el lenguaje de tu propio cuerpo.
+          </p>
+          
+          <div className="bento-grid">
+            <div className="bento-card bento-card--large">
+              <div className="bento-card__icon">📊</div>
+              <h3 className="bento-card__title">Registro Diario de Biomarcadores</h3>
+              <p className="bento-card__desc">
+                Registra tus niveles de energía, niebla mental (brain fog), estado de ánimo y dolor articular
+                en menos de 10 segundos al día. Identifica qué dispara tus síntomas.
+              </p>
+            </div>
+            
+            <div className="bento-card">
+              <div className="bento-card__icon">🔬</div>
+              <h3 className="bento-card__title">Historial de TSH y Labs</h3>
+              <p className="bento-card__desc">
+                Archiva tus T3, T4 y Anti-TPO. Gráficas visuales que le dan sentido a tus números.
+              </p>
+            </div>
+            
+            <div className="bento-card">
+              <div className="bento-card__icon">💬</div>
+              <h3 className="bento-card__title">Foros Seguros The Sanctuary</h3>
+              <p className="bento-card__desc">
+                Anonimato opcional y protección contra triggers. Un refugio de moderación total.
+              </p>
+            </div>
+            
+            <div className="bento-card bento-card--large">
+              <div className="bento-card__icon">📱</div>
+              <h3 className="bento-card__title">Instalación Nativa Offline</h3>
+              <p className="bento-card__desc">
+                TiroVida es una PWA (Progressive Web App). Presiona "Añadir a Inicio" en tu celular y 
+                úsala como una app nativa, rápida y que no consume tus datos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Glass */}
+      <section className="container">
+        <div className="cta-glass">
+          <h2 className="cta-glass__title">
+            No estás sola en esto.
+          </h2>
+          <p className="cta-glass__desc">
+            Únete a la mayor comunidad de mujeres y hombres que entienden perfectamente lo que significa vivir con fatiga crónica.
+          </p>
+          <Link href="/register" className="btn btn--premium-glow btn--lg">
+            Crear mi cuenta gratis
+          </Link>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="landing-footer">
         <div className="container">
-          <div className="landing-footer__brand">
+          <div style={{ fontFamily: 'var(--font-headline)', fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '16px' }}>
             <span>🦋</span> TiroVida
           </div>
-          <p className="landing-footer__disclaimer">
-            TiroVida es una herramienta de registro y comunidad. No proporciona
+          <p style={{ fontSize: '0.8rem', color: 'var(--color-outline)', maxWidth: '500px', margin: '0 auto 16px' }}>
+            TiroVida es una herramienta de soporte comunitario. No proporciona
             diagnósticos ni sustituye la opinión de un profesional de salud.
           </p>
-          <p className="landing-footer__copy">
+          <p style={{ fontSize: '0.8rem', color: 'var(--color-outline)' }}>
             © {new Date().getFullYear()} TiroVida. Hecho con 💜 para la comunidad tiroidea.
           </p>
         </div>
