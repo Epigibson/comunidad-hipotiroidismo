@@ -71,15 +71,7 @@ export default function OnboardingWizard({ userId }: { userId: string }) {
       }
     }
 
-    // Update profile with onboarding complete
-    const profileData: Database["public"]["Tables"]["profiles"]["Update"] = {
-      onboarding_completed: true,
-      default_medication_name: medName || "Levotiroxina",
-      default_medication_dose: medDose ? parseFloat(medDose) : null,
-    };
-    
-    await supabase.from("profiles").update(profileData as never).eq("id", userId);
-
+    // Finish onboarding
     setSaving(false);
     router.push("/dashboard");
   }

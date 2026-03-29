@@ -10,14 +10,13 @@ export default async function ProfilePage() {
   // Fetch profile
   const { data: profile } = (await supabase
     .from("profiles")
-    .select("alias, avatar_url, date_of_birth, gender, role, created_at")
+    .select("alias, avatar_url, birth_year, role, created_at")
     .eq("id", user.id)
     .single()) as {
     data: {
       alias: string;
       avatar_url: string | null;
-      date_of_birth: string | null;
-      gender: string | null;
+      birth_year: number | null;
       role: string;
       created_at: string;
     } | null;
@@ -28,13 +27,13 @@ export default async function ProfilePage() {
   // Fetch health conditions
   const { data: conditions } = (await supabase
     .from("health_conditions")
-    .select("id, condition_name, diagnosed_date")
+    .select("id, condition_name, diagnosis_date")
     .eq("user_id", user.id)
     .order("created_at", { ascending: true })) as {
     data: Array<{
       id: string;
       condition_name: string;
-      diagnosed_date: string | null;
+      diagnosis_date: string | null;
     }> | null;
   };
 

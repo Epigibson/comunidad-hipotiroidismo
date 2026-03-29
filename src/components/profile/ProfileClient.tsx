@@ -9,8 +9,7 @@ import type { Database } from "@/lib/types/database";
 interface ProfileData {
   alias: string;
   avatar_url: string | null;
-  date_of_birth: string | null;
-  gender: string | null;
+  birth_year: number | null;
   role: string;
   created_at: string;
 }
@@ -18,7 +17,7 @@ interface ProfileData {
 interface HealthCondition {
   id: string;
   condition_name: string;
-  diagnosed_date: string | null;
+  diagnosis_date: string | null;
 }
 
 interface ProfileClientProps {
@@ -44,8 +43,7 @@ const AVAILABLE_CONDITIONS = [
 export default function ProfileClient({ profile, conditions, userId, email }: ProfileClientProps) {
   const router = useRouter();
   const [alias, setAlias] = useState(profile.alias);
-  const [dob, setDob] = useState(profile.date_of_birth ?? "");
-  const [gender, setGender] = useState(profile.gender ?? "");
+  const [birthYear, setBirthYear] = useState(profile.birth_year ? profile.birth_year.toString() : "");
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
@@ -69,8 +67,7 @@ export default function ProfileClient({ profile, conditions, userId, email }: Pr
     const supabase = createClient();
     const profileUpdate: Database["public"]["Tables"]["profiles"]["Update"] = {
       alias: alias.trim(),
-      date_of_birth: dob || null,
-      gender: gender || null,
+      birth_year: birthYear ? parseInt(birthYear) : null,
     };
 
     const { error: dbError } = await supabase
@@ -186,27 +183,14 @@ export default function ProfileClient({ profile, conditions, userId, email }: Pr
 
             <div className="profile-form-row">
               <div className="input-group">
-                <label className="input-label">Fecha de nacimiento (opcional)</label>
+                <label className="input-label">Año de nacimiento (opcional)</label>
                 <input
-                  type="date"
+                  type="number"
+                  placeholder="Ej. 1990"
                   className="input"
-                  value={dob}
-                  onChange={(e) => setDob(e.target.value)}
+                  value={birthYear}
+                  onChange={(e) => setBirthYear(e.target.value)}
                 />
-              </div>
-              <div className="input-group">
-                <label className="input-label">Género (opcional)</label>
-                <select
-                  className="input"
-                  value={gender}
-                  onChange={(e) => setGender(e.target.value)}
-                >
-                  <option value="">Prefiero no decir</option>
-                  <option value="female">Femenino</option>
-                  <option value="male">Masculino</option>
-                  <option value="non-binary">No binario</option>
-                  <option value="other">Otro</option>
-                </select>
               </div>
             </div>
 
@@ -230,9 +214,9 @@ export default function ProfileClient({ profile, conditions, userId, email }: Pr
               {condList.map((c) => (
                 <div key={c.id} className="condition-chip">
                   {c.condition_name}
-                  {c.diagnosed_date && (
+                  {c.diagnosis_date && (
                     <span className="text-xs" style={{ opacity: 0.7 }}>
-                      ({new Date(c.diagnosed_date + "T12:00:00").getFullYear()})
+                      ({new Date(c.diagnosis_date + "T12:00:00").getFullYear()})
                     </span>
                   )}
                   <button
