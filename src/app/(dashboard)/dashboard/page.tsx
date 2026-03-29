@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import type { DailyLog, LabResult, Profile } from "@/lib/types/database";
+import type { Database } from "@/lib/types/database";
+
+type DailyLog = Database["public"]["Tables"]["daily_logs"]["Row"];
+type LabResult = Database["public"]["Tables"]["lab_results"]["Row"];
+type Profile = Database["public"]["Tables"]["profiles"]["Row"];
 
 export default async function DashboardPage() {
   const supabase = await createClient();
